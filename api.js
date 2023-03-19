@@ -140,13 +140,18 @@ async function deleteContrato(searchParam){
 }
 
 
-
-
-const patchRecibo = {
-  "propietario": "Maria Scurra",
-  "inquilino": "Martina Rodriguez",
-  "montoAlquiler": 46500
+async function sd(){
+  await fetch(u+'/close',{
+  method: 'POST'
+})
+  window.close()
 }
+
+// const patchRecibo = {
+//   "propietario": "Maria Scurra",
+//   "inquilino": "Martina Rodriguez",
+//   "montoAlquiler": 46500
+// }
 
 // const ContratoFrontend = {
 //   "idContrato": 777,
