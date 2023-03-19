@@ -142,7 +142,10 @@ async function deleteContrato(searchParam){
 
 async function sd(){
   await fetch(u+'/close',{
-  method: 'POST'
+  method: 'POST',
+  headers: {
+    'Access-Control-Allow-Private-Network': 'true'
+  }
 })
   window.close()
 }
