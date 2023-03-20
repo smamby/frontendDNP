@@ -751,10 +751,10 @@ function imprimirBoleta(div){
       var mTo = ''
       var a = document.getElementById("mail")
       if(div === 'inbody-prop'){
-         mTo =  itemEncontrado.propietario._email
+         mTo =  itemEncontrado.emailPropietario
          a.href = `mailto:${mTo}?subject=Liquidacion%20alquiler%20-%20${dateVenceShort}&body=Adjuntamos%20liquidacion%20de%20alquiler.%0A%0AAtte.%0ADel%20Norte%20Propiedades.%0A%0A%0A`;
       } else if(div === 'inbody-inq') {
-         mTo = itemEncontrado.inquilino._email
+         mTo = itemEncontrado.emailInquilino
          a.href = `mailto:${mTo}?subject=Recibo%20de%20alquiler%20-%20${dateVenceShort}&body=Adjuntamos%20recibo%20de%20alquiler.%0A%0AAtte.%0ADel%20Norte%20Propiedades.%0A%0A%0A`;
       }
       console.log(mTo);      
