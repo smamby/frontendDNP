@@ -140,12 +140,27 @@ async function deleteContrato(searchParam){
 }
 
 
-async function sd(){
-  await fetch(u+'/close',{
-  method: 'POST'
-})
-  window.close()
+
+window.onbeforeunload = ()=>{
+  return 'ACEPTAR para cerrar la aplicacion. CANCELAR para refrescar la pagina' 
 }
+
+window.addEventListener('unload', ()=>{
+  fetch(u+'/close',{
+    method: 'POST',
+    headers: {
+      'Access-Control-Allow-Private-Network': 'true'
+    }
+  })
+})
+  
+
+// async function sd(){
+//   await fetch(u+'/close',{
+//   method: 'POST'
+// })
+//   window.close()
+// }
 
 // const patchRecibo = {
 //   "propietario": "Maria Scurra",
