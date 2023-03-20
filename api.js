@@ -141,15 +141,17 @@ async function deleteContrato(searchParam){
 
 
 
-window.addEventListener('beforeunload', () => {
-  if(confirm('ACEPTAR para cerrar la aplicacion. CANCELAR para refrescar la pagina')){
-    fetch(u+'/close',{
-      method: 'POST',
-      headers: {
-        'Access-Control-Allow-Private-Network': 'true'
-      }
-    })
-  }
+window.onbeforeunload = ()=>{
+  return 'ACEPTAR para cerrar la aplicacion. CANCELAR para refrescar la pagina' 
+}
+
+window.addEventListener('unload', ()=>{
+  fetch(u+'/close',{
+    method: 'POST',
+    headers: {
+      'Access-Control-Allow-Private-Network': 'true'
+    }
+  })
 })
   
 
