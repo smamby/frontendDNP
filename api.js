@@ -140,15 +140,14 @@ async function deleteContrato(searchParam){
 }
 
 
-function sd(){
-  window.addEventListener('beforeunload', async () => {
-      await fetch(u+'/close',{
-      method: 'POST',
-      headers: {
-        'Access-Control-Allow-Private-Network': 'true'
-      }
-    })
+
+window.addEventListener('beforeunload', async () => {
+    await fetch(u+'/close',{
+    method: 'POST',
+    headers: {
+      'Access-Control-Allow-Private-Network': 'true'
+    }
   })
-  //window.close()
-}
+})
+  
 
