@@ -733,7 +733,7 @@ function imprimirBoletaPDF(){
       impInq();
       var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
       var ficha = document.getElementById('inbody-inq');
-      var wImp = window.open('https://smamby.github.io/popimp.html','popimp');
+      var wImp = window.open('https://smamby.github.io/frontendDNP/popimp.html','popimp');
       localStorage.setItem(ficha, 'ficha')
    //    wImp.document.write(`<html><head><title>Print it!</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    //    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;0,700;1,200;1,600&display=swap" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./styles/imp.css"></head><body><div class="bodyInt">${ficha.innerHTML}</div></body></html><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -761,7 +761,7 @@ function imprimirBoletaPDF(){
       var docInq = new jsPDF();
       var fichaInq = document.getElementById('inbody-inq');
       var fileNameInq =  `${re.numeroRecibo} ${co.direccion} inq.pdf`;
-      docInq.html(wImp,{
+      docInq.html(fichaInq,{
          callback: function(docInq) {
             docInq.save(fileNameInq);
         },
@@ -777,7 +777,7 @@ function imprimirBoletaPDF(){
       var docProp = new jsPDF();
       var fichaProp = document.getElementById('inbody-prop');
       var fileNameProp =  `${re.numeroRecibo} ${co.direccion} prop.pdf`;
-      docProp.html(bodyHTML(fichaProp),{
+      docProp.html(fichaProp,{
          callback: function(docProp) {
             docProp.save(fileNameProp);
         },
