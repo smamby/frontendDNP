@@ -729,19 +729,23 @@ function imprimirBoleta(div){
 }
 
 function imprimirBoletaPDF(){
-   var bodyHTML = (ficha)=>{`<html><head><title>Print it!</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;0,700;1,200;1,600&display=swap" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./styles/imp.css"></head><body><div class="bodyInt">${ficha}</div></body></html>`}
-   
    if (itemEncontrado!=''){
       impInq();
+      var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
+      var ficha = document.getElementById('inbody-inq');
+      var wImp = window.open('','popimp');
+      wImp.document.write(`<html><head><title>Print it!</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;0,700;1,200;1,600&display=swap" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./styles/imp.css"></head><body><div class="bodyInt">${ficha.innerHTML}</div></body></html><script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="./core.js"></script>
+    `)
+      
       var re = reciboLevantado[0];
       var co = contratoLevantado[0];
-      var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
 
       var docInq = new jsPDF();
       var fichaInq = document.getElementById('inbody-inq');
       var fileNameInq =  `${re.numeroRecibo} ${co.direccion} inq.pdf`;
-      docInq.html(bodyHTML(fichaInq),{
+      docInq.html(wImp,{
          callback: function(docInq) {
             docInq.save(fileNameInq);
         },
@@ -759,7 +763,7 @@ function imprimirBoletaPDF(){
       var fileNameProp =  `${re.numeroRecibo} ${co.direccion} prop.pdf`;
       docProp.html(bodyHTML(fichaProp),{
          callback: function(docProp) {
-            docInq.save(fileNameInq);
+            docProp.save(fileNameProp);
         },
         margin: [10, 10, 10, 10],
         autoPaging: 'text',
