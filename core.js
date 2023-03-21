@@ -733,11 +733,11 @@ function imprimirBoletaPDF(){
       impInq();
       var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
       var ficha = document.getElementById('inbody-inq');
-      localStorage.setItem(ficha, 'ficha')
+      localStorage.setItem('ficha', JSON.stringify(ficha))
       var re = reciboLevantado[0];
       var co = contratoLevantado[0];
-      localStorage.setItem(re, 'recibo');
-      localStorage.setItem(co, 'contrato');
+      localStorage.setItem('recibo', JSON.stringify(re));
+      localStorage.setItem('contrato', JSON.stringify(co));
 
       var wImp = window.open('https://smamby.github.io/frontendDNP/popimp.html','popimp');
    //    wImp.document.write(`<html><head><title>Print it!</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -16,7 +16,9 @@
         </div>
         <script>
             const { jsPDF } = window.jspdf;
-            var fichaImp = localStorage.getItem('ficha');
+            var fichaImp = JSON.parse(localStorage.getItem('ficha'));
+            var re = JSON.parse(localStorage.getItem('recibo'));
+            var co = JSON.parse(localStorage.getItem('contrato'));
             var div = document.getElementById('bodyInt');
             div.innerHTML = fichaImp;
 
