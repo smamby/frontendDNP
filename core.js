@@ -729,21 +729,34 @@ function imprimirBoleta(div){
 }
 
 function imprimirBoletaPDF(){
+   var bodyHTML = (ficha)=>{`<html><head><title>Print it!</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,500;0,700;1,200;1,600&display=swap" rel="stylesheet"><link rel="stylesheet" type="text/css" href="./styles/imp.css"></head><body><div class="bodyInt">${ficha}</div></body></html>`}
+   
    if (itemEncontrado!=''){
       impInq();
-      var re = reciboLevantado;
-      var co = contratoLevantado;
+      var re = reciboLevantado[0];
+      var co = contratoLevantado[0];
       var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
 
       var docInq = new jsPDF();
       var fichaInq = document.getElementById('inbody-inq');
-      docInq.addImage(fichaInq,'JPEG',0,0);
       var fileNameInq =  `${re.numeroRecibo} ${co.direccion} inq.pdf`;
-      docInq.save(`${carpeta}${fileNameInq}`);
+      docInq.html(fichaInq,{
+         callback: function(doc) {
+            docInq.save(fileNameInq);
+        },
+        margin: [10, 10, 10, 10],
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 190,
+        windowWidth: 675
+      });
+      
 
       var docProp = new jsPDF();
       var fichaProp = document.getElementById('inbody-prop');
-      docProp.addImage(fichaProp,'JPEG',0,0);
+      docProp.html(bodyHTML(fichaProp));
       var fileNameProp =  `${re.numeroRecibo} ${co.direccion} prop.pdf`;
       docProp.save(`${carpeta}${fileNameProp}`);
 
