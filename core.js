@@ -14,7 +14,7 @@
 // import { FormData } from 'node-fetch';
 // import { webpack } from 'webpack';
 // import { fromByteArray } from 'ipaddr.js';
-
+const { jsPDF } = window.jspdf;
 
 // THEME
 function styleDark(){
