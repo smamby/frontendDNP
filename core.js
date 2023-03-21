@@ -741,8 +741,8 @@ function imprimirBoletaPDF(){
       var docInq = new jsPDF();
       var fichaInq = document.getElementById('inbody-inq');
       var fileNameInq =  `${re.numeroRecibo} ${co.direccion} inq.pdf`;
-      docInq.html(fichaInq,{
-         callback: function(doc) {
+      docInq.html(bodyHTML(fichaInq),{
+         callback: function(docInq) {
             docInq.save(fileNameInq);
         },
         margin: [10, 10, 10, 10],
@@ -756,9 +756,18 @@ function imprimirBoletaPDF(){
 
       var docProp = new jsPDF();
       var fichaProp = document.getElementById('inbody-prop');
-      docProp.html(bodyHTML(fichaProp));
       var fileNameProp =  `${re.numeroRecibo} ${co.direccion} prop.pdf`;
-      docProp.save(`${carpeta}${fileNameProp}`);
+      docProp.html(bodyHTML(fichaProp),{
+         callback: function(docProp) {
+            docInq.save(fileNameInq);
+        },
+        margin: [10, 10, 10, 10],
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 190,
+        windowWidth: 675
+      });
 
    //   setTimeout(async() => {
    //       wImp.print()         
