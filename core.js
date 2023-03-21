@@ -718,16 +718,45 @@ function imprimirBoleta(div){
       
      setTimeout(async() => {
          wImp.print()         
-      }, 100);
+      }, 500);
       //wImp.document.close();
       //wImp.close();
         
    } else {
       alert('Cargá algun contrato, no cargaste ninguno.');
       document.getElementById("buscarInput").focus();
-   }
-   
-   
+   }   
+}
+
+function imprimirBoletaPDF(){
+   if (itemEncontrado!=''){
+      impInq();
+      var re = reciboLevantado;
+      var co = contratoLevantado;
+      var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
+
+      var docInq = new jsPDF();
+      var fichaInq = document.getElementById('inbody-inq');
+      docInq.addImage(fichaInq,'JPEG',0,0);
+      var fileNameInq =  `${re.numeroRecibo} ${co.direccion} inq.pdf`;
+      docInq.save(`${carpeta}${fileNameInq}`);
+
+      var docProp = new jsPDF();
+      var fichaProp = document.getElementById('inbody-prop');
+      docProp.addImage(fichaProp,'JPEG',0,0);
+      var fileNameProp =  `${re.numeroRecibo} ${co.direccion} prop.pdf`;
+      docProp.save(`${carpeta}${fileNameProp}`);
+
+   //   setTimeout(async() => {
+   //       wImp.print()         
+   //    }, 500);
+      //wImp.document.close();
+      //wImp.close();
+        
+   } else {
+      alert('Cargá algun contrato, no cargaste ninguno.');
+      document.getElementById("buscarInput").focus();
+   }   
 }
 
 
