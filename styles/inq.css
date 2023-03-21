@@ -31,9 +31,13 @@ body {
     width: 140px;
 }
 #imp, #nuevo{
-    margin: 20px;
+    margin: 12px;
     margin-bottom: 36px;
 }
+.pdf{
+    vertical-align: top;
+}
+
 #imprimir{
     border-color: var(--btnAlert);
 }
@@ -279,6 +283,9 @@ border-bottom: 1px solid black;
     border-radius: 4px;
     justify-content: end;
     margin-top: 8px;
+}
+.uni {
+    background-color: rgb(28, 42, 121) !important;
 }
 #nuevo{
     margin-left: 230px;

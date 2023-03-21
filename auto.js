@@ -11,6 +11,7 @@ var comi = 0;
 //comi = new Intl.NumberFormat('de-DE').format(comi)
 
 //RECIBO inputs and prints
+var dateShort;
 function impInq(){
     if (itemEncontrado==''){
         alert('Cargá algun contrato, no cargaste ninguno. Dale despabilate!');        
@@ -67,7 +68,7 @@ function impInq(){
         const opDate2 = {year:'numeric',month:'short'};
         var v=vencedateParse = Date.parse(venceInput)+86400000
         var dateInv = new Date(v).toLocaleDateString("sp-IN", opDate)
-        var dateShort = new Date(v).toLocaleDateString("sp-IN", opDate2)
+        dateShort = new Date(v).toLocaleDateString("sp-IN", opDate2)
         console.log('Input',venceInput);
         console.log(vencedateParse);
         console.log(vencedateParse+86400000);
