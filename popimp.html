@@ -16,29 +16,50 @@
         </div>
         <script>
             const { jsPDF } = window.jspdf;
-            var fichaImp = localStorage.getItem('ficha');
+            var fichaImpI = localStorage.getItem('fichaI');
+            var fichaImpP = localStorage.getItem('fichaP');
             var re = JSON.parse(localStorage.getItem('recibo'));
             var co = JSON.parse(localStorage.getItem('contrato'));
             var div = document.getElementById('bodyInt');
             var divHTML = document.createElement('div');
             divHTML.id = 'divHTML';
-            divHTML.innerHTML = fichaImp;
+            divHTML.innerHTML = fichaImpI;
             div.appendChild(divHTML)
-
-            var docInq = new jsPDF();
-            //var fichaInq = document.getElementById('inbody-inq');
-            var fileNameInq =  'inq.pdf' //`${re.numeroRecibo} ${co.direccion} inq.pdf`;
-            docInq.html(div,{
-                callback: function(docInq) {
-                    docInq.save(fileNameInq);
-                },
-                margin: [10, 10, 10, 10],
-                autoPaging: 'text',
-                x: 0,
-                y: 0,
-                width: 190,
-                windowWidth: 675
-            });
+            async function impPdfInq(){
+                var docInq = new jsPDF();
+                //var fichaInq = document.getElementById('inbody-inq');
+                var fileNameInq =  `${re.numeroRecibo} ${co.direccion} inq.pdf`;
+                await docInq.html(div,{
+                    callback: async function(docInq) {
+                        await docInq.save(fileNameInq);
+                    },
+                    margin: [10, 10, 10, 10],
+                    autoPaging: 'text',
+                    x: 0,
+                    y: 0,
+                    width: 190,
+                    windowWidth: 675
+                });
+                divHTML.innerHTML = '';
+            };
+            divHTML.innerHTML = fichaImpP;
+            div.appendChild(divHTML);
+            async function impPdfProp(){
+                var docProp = new jsPDF();
+                var fichaProp = document.getElementById('inbody-prop');
+                var fileNameProp =  `${re.numeroRecibo} ${co.direccion} prop.pdf`;
+                await docProp.html(div,{
+                    callback: async function(docProp) {
+                        await docProp.save(fileNameProp);
+                    },
+                    margin: [10, 10, 10, 10],
+                    autoPaging: 'text',
+                    x: 0,
+                    y: 0,
+                    width: 190,
+                    windowWidth: 675
+                });
+            };
         </script>
         <!-- <script src="./core.js"></script> -->
     </body>
