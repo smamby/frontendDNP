@@ -299,3 +299,6 @@ body {
 #mail{
     visibility: visible;
 }
+span{
+    font-stretch: condensed;
+}
