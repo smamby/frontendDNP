@@ -30,7 +30,7 @@
                 var docInq = new jsPDF();
                 //var fichaInq = document.getElementById('inbody-inq');
                 var fileNameInq =  `${re.numeroRecibo} ${co.direccion} inq.pdf`;
-                await docInq.html(div,{
+                await docInq.html(divHTML,{
                     callback: async function(docInq) {
                         await docInq.save(fileNameInq);
                     },
@@ -55,7 +55,7 @@
                 //docProp.setFont("Kanit");
                 //docProp.setWordSpacing(1)
                 //docProp.setCharSpace(0.7);
-                await docProp.html(div,{
+                await docProp.html(divHTML,{
                     callback: async function(docProp) {
                         await docProp.save(fileNameProp);
                     },
