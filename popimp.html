@@ -16,18 +16,19 @@
         </div>
         <script>
             const { jsPDF } = window.jspdf;
-            var fichaImp = JSON.parse(localStorage.getItem('ficha'));
+            var fichaImp = localStorage.getItem('ficha');
             var re = JSON.parse(localStorage.getItem('recibo'));
             var co = JSON.parse(localStorage.getItem('contrato'));
             var div = document.getElementById('bodyInt');
             var divHTML = document.createElement('div');
+            divHTML.id = 'divHTML';
             divHTML.innerHTML = fichaImp;
             div.appendChild(divHTML)
 
             var docInq = new jsPDF();
             //var fichaInq = document.getElementById('inbody-inq');
             var fileNameInq =  'inq.pdf' //`${re.numeroRecibo} ${co.direccion} inq.pdf`;
-            docInq.html(fichaImp,{
+            docInq.html(div,{
                 callback: function(docInq) {
                     docInq.save(fileNameInq);
                 },
