@@ -20,7 +20,9 @@
             var re = JSON.parse(localStorage.getItem('recibo'));
             var co = JSON.parse(localStorage.getItem('contrato'));
             var div = document.getElementById('bodyInt');
-            div.innerHTML = fichaImp;
+            var divHTML = document.createElement('div');
+            divHTML.innerHTML = fichaImp;
+            div.appendChild(divHTML)
 
             var docInq = new jsPDF();
             //var fichaInq = document.getElementById('inbody-inq');

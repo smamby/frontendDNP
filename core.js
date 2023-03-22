@@ -14,7 +14,7 @@
 // import { FormData } from 'node-fetch';
 // import { webpack } from 'webpack';
 // import { fromByteArray } from 'ipaddr.js';
-const { jsPDF } = window.jspdf;
+//const { jsPDF } = window.jspdf;
 
 // THEME
 function styleDark(){
@@ -733,7 +733,8 @@ function imprimirBoletaPDF(){
       impInq();
       var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
       var ficha = document.getElementById('inbody-inq');
-      localStorage.setItem('ficha', JSON.stringify(ficha))
+      var fichaOuter = ficha.outerHTML;
+      localStorage.setItem('ficha',(fichaOuter))
       var re = reciboLevantado[0];
       var co = contratoLevantado[0];
       localStorage.setItem('recibo', JSON.stringify(re));
