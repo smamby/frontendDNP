@@ -732,9 +732,12 @@ function imprimirBoletaPDF(){
    if (itemEncontrado!=''){
       impInq();
       var carpeta = `c:/users/seba/documents/prueba/${dateShort}/`;
-      var ficha = document.getElementById('inbody-inq');
-      var fichaOuter = ficha.outerHTML;
-      localStorage.setItem('ficha',(fichaOuter))
+      var fichaI = document.getElementById('inbody-inq');
+      var fichaOuterI = fichaI.outerHTML;
+      localStorage.setItem('fichaI',(fichaOuterI))
+      var fichaP = document.getElementById('inbody-prop');
+      var fichaOuterP = fichaP.outerHTML;
+      localStorage.setItem('fichaP',(fichaOuterP))
       var re = reciboLevantado[0];
       var co = contratoLevantado[0];
       localStorage.setItem('recibo', JSON.stringify(re));
