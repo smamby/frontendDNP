@@ -38,13 +38,13 @@
                     x: 0,
                     y: 0,
                     width: 190,
-                    windowWidth: 675
+                    windowWidth: 625
                 });
                 divHTML.innerHTML = '';
             };
-            divHTML.innerHTML = fichaImpP;
-            div.appendChild(divHTML);
             async function impPdfProp(){
+                divHTML.innerHTML = fichaImpP;
+                div.appendChild(divHTML);
                 var docProp = new jsPDF();
                 var fichaProp = document.getElementById('inbody-prop');
                 var fileNameProp =  `${re.numeroRecibo} ${co.direccion} prop.pdf`;
@@ -57,7 +57,7 @@
                     x: 0,
                     y: 0,
                     width: 190,
-                    windowWidth: 675
+                    windowWidth: 625
                 });
             };
             async function impPDF(){
