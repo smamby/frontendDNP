@@ -228,17 +228,24 @@ function deleteDetalle(){
     document.getElementById("pesosLetra").innerHTML = '';
     impInq();
 }
+function setNum(num){
+    NUMERACION=num;
+    guardarInfo();
+}
+
+
 
 async function nuevo(){
-    location.reload()
-    // var numCheck = await getRecibos(NUMERACION)
-    // console.log(numCheck)
-    // if(numCheck.length == 0){
-    //     alert(`No existe ningun recibo con el N° ${NUMERACION}`)
-    // } else {
+    var numCheck = await getRecibos(NUMERACION)
+    console.log(numCheck)
+    if(reciboLevantado.length == 0){
+        alert(`No existe ningun recibo con el N° ${NUMERACION}`);
+        return false;
+    } else {
+        location.reload()
         contador();
         document.getElementById("buscarInput").focus();
-    //}
+    }
 }
 
 function contador(){
@@ -252,4 +259,17 @@ function contador(){
         //console.log(NUMERACION);
         alert(`Nueva boleta n° ${NUMERACION}`)
     //}
+}
+
+
+function listFunc(){
+    console.log({
+        'listFunc()' : 'lista algunas funciones para configurar el estado',
+        'setNum(numero)' : 'setear numeracion',
+        'guardarInfo()' : 'guardar toda la info en LocalStorage',
+        'cargarInfo()' : 'Carga toda la info del LocalStorage',
+        'addContrato(body)' : 'Guarda manualmente un contrato en la BD',
+        'addRecibo(body)' : 'guarda manualmente un recibo en la BD',
+
+    })
 }
