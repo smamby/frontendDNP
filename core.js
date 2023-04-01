@@ -370,9 +370,10 @@ function indiceContratos(){
 var itemEncontrado = '';
 var indiceItemEncontrado;
 var idBuscar;
+
 async function buscar(id){
    idBuscar = document.getElementById('buscarInput').value;
-   await getContrato(idBuscar)
+   await getContrato(idBuscar || id)
    if(idBuscar == ''){
       idBuscar = contratoLevantado[0]["idContrato"];
    } else {
@@ -384,7 +385,7 @@ async function buscar(id){
       document.getElementById('buscarInput').value = '';   
    } else {
       var dataImprimir = contratoLevantado[0];
-      console.log(dataImprimir);
+      console.log('buscarId: ',dataImprimir);
       //imprimirContrato(dataImprimir);
       levantarContrato(dataImprimir);
       document.getElementById('buscarInput').value = '';
@@ -613,8 +614,15 @@ function editarContrato(contratoLevantado){
          "imagenes":[]
       };   
       console.log(idContrato)
-      editContrato(bodyContrato)
-      //buscar(parseInt(idContrato));
+
+      new Promise((resolve,reject)=>{
+         resolve( editContrato(bodyContrato ))
+      })
+      .then(()=>{ buscar( itemEncontrado.idContrato ) })
+      .then(()=>{ 
+         levantarContrato(contratoLevantado[0])
+         impInq()
+      })      
    };   
 };
 //Borrar Contrato

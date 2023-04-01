@@ -19,7 +19,7 @@ async function getContrato(searchParam){
     })
     const data = await res.json()
     console.log('url: ',u+c+searchParam)
-    console.log('contrato',data)
+    console.log('contrato[api]',data)
     contratoLevantado = data;
 }
 async function getRecibos(searchParam){
@@ -126,8 +126,12 @@ async function editContrato(dataNueva){
     },
     body: JSON.stringify(dataNueva)
   })
-  console.log(contrato);
+  console.log('ContEdit: ',contrato);
   console.log('Contrato n°'+searchParam+' editado')
+  // .then((savedContrato)=>{
+  //   return savedContrato
+  // })
+  return contrato
 }
 
 async function deleteContrato(searchParam){
