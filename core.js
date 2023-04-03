@@ -75,9 +75,10 @@ divImp.style.display="none"
 
 //Levantar inputs
 //var contratos = []
-var indices = []
-console.log('indices',indices)
-
+//var indices = []
+cargarInfo();
+console.log('indices',indices);
+console.log('NUMERACION: ', NUMERACION);
 var nombrePInput = '';
 var apellidoPInput = '';
 var celularPInput = '';
@@ -351,7 +352,7 @@ function cargarInfo(){
       // console.log('Datos cargados');
       // console.log('indices',indices);
       // console.log('contratos',contratos);
-      console.log('NUMERACION',NUMERACION);
+      //console.log('NUMERACION',NUMERACION);
    }
 //}
 
@@ -393,7 +394,8 @@ async function buscar(id){
    }
    indiceItemEncontrado = indices.findIndex(el=> el[0] == idBuscar); 
    //console.log('contrato inexistente');
-   impInq()
+   vaciarRecibo();
+   impInq() //YA ES DENTRO DE VACIARRECIBO.DELETEDETALLE
 }
 
 
@@ -669,7 +671,7 @@ function ajustarIndices(){
    indices[indx][0] = chkId;
    indices[indx][1] = chkDireccion;
    console.log(indices[indx]);
-   //guardarInfo()
+   guardarInfo()
 }
 
 //Borrar Contrato
