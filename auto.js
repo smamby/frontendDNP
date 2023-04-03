@@ -10,6 +10,27 @@ var valAlq = 0;
 var comi = 0;
 //comi = new Intl.NumberFormat('de-DE').format(comi)
 
+function vaciarRecibo() {
+    reciboLevantado = [];
+    numRecibo = undefined;
+    document.getElementById('num').value = NUMERACION;
+    document.getElementById('numProp').value = NUMERACION;
+    document.getElementById("vence").value = '';
+    document.getElementById("pesos").value = '';
+    document.getElementById("observacionesInput").value = 'Recibí los comprobantes de pago de ';
+    deleteDetalle()
+};
+
+function chkReciboVacio(){
+    var chkVence = document.getElementById("vence").value === '';
+    var chkPesos = document.getElementById("pesos").value === '';
+    if (chkVence && chkPesos){
+        return true
+    } else {
+        return false
+    }
+};
+
 //RECIBO inputs and prints
 var dateShort;
 function impInq(){
@@ -120,7 +141,11 @@ function impInq(){
         totalFinalProp.innerHTML = sumarParaTotalPropImp+'.-';
         console.log('totales',sumarParaTotalImp,sumarParaTotalPropImp)
         console.log(valAlqImp,comiImp)
-    
+        if(chkReciboVacio()){
+            console.log('no se guarda el recibo');
+            return false
+        }
+        console.log('Recibo guardados')
         guardarRecibo();
     }
 }
@@ -270,6 +295,5 @@ function listFunc(){
         'cargarInfo()' : 'Carga toda la info del LocalStorage',
         'addContrato(body)' : 'Guarda manualmente un contrato en la BD',
         'addRecibo(body)' : 'guarda manualmente un recibo en la BD',
-
     })
 }
