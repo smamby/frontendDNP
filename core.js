@@ -532,7 +532,14 @@ function levantarContrato(itemEncontrado){
    // document.getElementById("imagenesFile").value = itemEncontrado.imagenes;
    // document.getElementById("contratoFile").value = itemEncontrado.contrato;
 }
-function editarContrato(contratoLevantado){
+var AJUSTARINDICE = false
+function editarContrato(){
+   if(verificarIDEdited()){
+      editCont(contratoLevantado)
+   }
+}
+function editCont(contratoLevantado){
+   //verificarIDEdited()
    if(confirm("Vas a sobre escribir todos los datos de este contrato estas segura, chequeaste todos los campos?")){
       console.log(contratoLevantado)
       let inicio = contratoLevantado[0].inicioContrato;
@@ -614,17 +621,57 @@ function editarContrato(contratoLevantado){
          "imagenes":[]
       };   
       console.log(idContrato)
+      if(AJUSTARINDICE) {ajustarIndices()}
 
       new Promise((resolve,reject)=>{
-         resolve( editContrato(bodyContrato ))
+         resolve( editContrato(bodyContrato) )
       })
-      .then(()=>{ buscar( itemEncontrado.idContrato ) })
+      .then(()=>{          
+         let chkId = document.getElementById("idContrato").value
+         buscar( chkId || itemEncontrado.idContrato ) 
+      })
       .then(()=>{ 
          levantarContrato(contratoLevantado[0])
          impInq()
       })      
    };   
 };
+
+function verificarIDEdited(){
+   var chkId = document.getElementById("idContrato").value;
+   var chkDireccion = document.getElementById("direccion").value;
+   var direccionNoEditada = contratoLevantado[0].direccion;
+   var idNoEditado = (contratoLevantado[0].idContrato).toString();
+   var direNOTChanged = direccionNoEditada === chkDireccion;
+   var idNOTChanged = idNoEditado === chkId;
+   var chk = chkDireccion.includes(chkId);
+   console.log(chkId,idNoEditado,direccionNoEditada, chkDireccion, chk);
+   console.log('direNOTChanged? ', direNOTChanged);
+   console.log('idNOTChanged? ', idNOTChanged)
+   if(chk===false){
+      alert('No coincide el ID con la direccion!! Revisa los datos')
+      return false
+   } else if (chk===true) {
+      if(direNOTChanged===false || idNOTChanged===false){
+         console.log('cambio la direccion o el id');
+         AJUSTARINDICE = true;
+      }
+      return true    
+   };
+}
+function ajustarIndices(){
+   console.log('indices[ajustarIndices] ', indices )
+   var indx = indices.findIndex(el => el[0] === contratoLevantado[0].idContrato)
+   console.log('indx: ',indx)
+   var chkId = parseInt(document.getElementById("idContrato").value);
+   var chkDireccion = document.getElementById("direccion").value;
+   console.log(indices[indx], chkId, chkDireccion)
+   indices[indx][0] = chkId;
+   indices[indx][1] = chkDireccion;
+   console.log(indices[indx]);
+   //guardarInfo()
+}
+
 //Borrar Contrato
 function borrarContrato(){   
    deleteContrato(contratoLevantado[0]["idContrato"])
