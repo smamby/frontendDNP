@@ -436,7 +436,7 @@ function cargarRecibo(){
    document.getElementById("num").innerHTML = recibo["numeroRecibo"];
    document.getElementById('numProp').innerHTML = recibo["numeroRecibo"];
    document.getElementById("vence").value = recibo["fechaVencimiento"];
-   document.getElementById("pesos").value = recibo["textoTotal"];
+   //document.getElementById("pesos").value = recibo["textoTotal"];
    document.getElementById("observacionesInput").value = recibo["observaciones"];
    document.getElementById("comisionSelect").value = recibo["tipoHonorarios"]
    var detallesRecibo = recibo.detalles;
@@ -454,7 +454,7 @@ async function guardarRecibo(){
    var num = numRecibo? numRecibo: NUMERACION;
    var numContrato = contratoLevantado[0]["idContrato"]
    var dateVence = document.getElementById("vence").value
-   var textoTotal = document.getElementById("pesos").value
+   //var textoTotal = document.getElementById("pesos").value
    var observaciones = document.getElementById("observacionesInput").value;
    var propietario = `${contrato.nombrePropietario} ${contrato.apellidoPropietario}`;
    var inquilino = `${contrato.nombreInquilino} ${contrato.apellidoInquilino}`;
@@ -470,7 +470,7 @@ async function guardarRecibo(){
       "inquilino": inquilino,
       "montoAlquiler": montoAlquiler,
       "fechaVencimiento": dateVence,
-      "textoTotal": textoTotal,
+      //"textoTotal": textoTotal,
       "detalles": detallesRecibo,
       "observaciones": observaciones,
       "tipoHonorarios": tipoHonorario,

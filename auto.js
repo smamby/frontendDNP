@@ -16,15 +16,15 @@ function vaciarRecibo() {
     document.getElementById('num').value = NUMERACION;
     document.getElementById('numProp').value = NUMERACION;
     document.getElementById("vence").value = '';
-    document.getElementById("pesos").value = '';
+    //document.getElementById("pesos").value = '';
     document.getElementById("observacionesInput").value = 'Recibí los comprobantes de pago de ';
     deleteDetalle()
 };
 
 function chkReciboVacio(){
     var chkVence = document.getElementById("vence").value === '';
-    var chkPesos = document.getElementById("pesos").value === '';
-    if (chkVence && chkPesos){
+    //var chkPesos = document.getElementById("pesos").value === '';
+    if (chkVence){
         return true
     } else {
         return false
@@ -46,7 +46,7 @@ function impInq(){
         var fechaPrintProp = document.getElementById('dateProp');
         var seniorPrint = document.getElementById('senior');
         var domicilioInqPrint = document.getElementById('domicilio');
-        var pesosLetrasInput = document.getElementById("pesos").value;
+        //var pesosLetrasInput = document.getElementById("pesos").value;
         var pesosLetraPrint = document.getElementById("pesosLetra")
         var venceInput = document.getElementById("vence").value;
         var vencePrint = document.getElementById("vencePrint");
@@ -147,7 +147,7 @@ function impInq(){
         //total
         var numToText = init(sumarParaTotal)
         //pesosLetrasInput.value = numToText;
-        pesosLetraPrint.innerHTML = pesosLetrasInput.toUpperCase() || numToText.toUpperCase();
+        pesosLetraPrint.innerHTML = numToText.toUpperCase();
     
         if(chkReciboVacio()){
             console.log('no se guarda el recibo');
@@ -257,7 +257,7 @@ function deleteDetalle(){
     items = [];
     detalleTotal = 0;
     detalleTotalProp = 0;
-    document.getElementById("pesos").value = '';
+    //document.getElementById("pesos").value = '';
     document.getElementById("pesosLetra").innerHTML = '';
     impInq();
 }
