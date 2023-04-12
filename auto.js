@@ -84,7 +84,7 @@ function impInq(){
         seniorPrint.innerHTML = itemEncontrado.nombreInquilino.toUpperCase()+' '+itemEncontrado.apellidoInquilino.toUpperCase();
         domicilioInqPrint.innerHTML = itemEncontrado.direccion.toUpperCase();
         domicilioAlq.innerHTML = itemEncontrado.direccion.toUpperCase();
-        pesosLetraPrint.innerHTML = pesosLetrasInput.toUpperCase();
+        //pesosLetraPrint.innerHTML = pesosLetrasInput.toUpperCase();
         const opDate = {year:'numeric',month:'numeric',day:'numeric'};
         const opDate2 = {year:'numeric',month:'short'};
         var v=vencedateParse = Date.parse(venceInput)+86400000
@@ -141,6 +141,14 @@ function impInq(){
         totalFinalProp.innerHTML = sumarParaTotalPropImp+'.-';
         console.log('totales',sumarParaTotalImp,sumarParaTotalPropImp)
         console.log(valAlqImp,comiImp)
+        
+        // aca insertar numToText
+        
+        //total
+        var numToText = init(sumarParaTotal)
+        //pesosLetrasInput.value = numToText;
+        pesosLetraPrint.innerHTML = pesosLetrasInput.toUpperCase() || numToText.toUpperCase();
+    
         if(chkReciboVacio()){
             console.log('no se guarda el recibo');
             return false
